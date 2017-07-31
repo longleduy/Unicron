@@ -9,7 +9,7 @@ var userSchema = mongoose.Schema({
     avatar: String
 })
 var User=mongoose.model('users',userSchema);
-userSchema.methods.HashPass = function (password) {
+userSchema.methods.hashPass = function (password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
 }
 userSchema.methods.validPass = function (password) {

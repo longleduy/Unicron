@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../head %>
+</head>
+
+<body
+    <% include ../header %>
+        <div>
+        <div class="row">
+            <div class="col-md-1" >
+
+            </div>
+            <div class="col-md-10" >
+            <div class="listAccount">
+                <h1>Account's List</h1>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>User Name</th>
+                            <th>Pass Word</th>
+                            <th>Age</th>
+                            <th>Email</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <% list.forEach(function(list){ %>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" name="ckbAccount" value=""></td>
+                                <td>
+                                    <%= list.user_name %>
+                                </td>
+                                <td>
+                                    <%= list.pass_word %>
+                                </td>
+                                <td>
+                                    <%= list.age %>
+                                </td>
+                                <td>
+                                    <%= list.email %>
+                                </td>
+                                <td><a href="/adminAccount/listAccount/<%= list._id %>/view"><img class="imglink" src="/images/edit31.png"></a></td>
+                                <td><a href="/adminAccount/listAccount/<%= list._id %>/delete"><img class="imglink" src="/images/del21.png"></a></td>
+                            </tr>
+                        </tbody>
+                        <% }) %>
+                </table>
+            </div>
+        <div class="col-md-1">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

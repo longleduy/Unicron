@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../head %>
+
+</head>
+
+<body <% include ../header %>
+    <div style="padding-top:50px">
+        <div class="row">
+            <div class="col-md-6" >
+                <div class="unicron">
+                    <span>Unicron</span>
+                </div>
+
+            </div>
+            <div class="col-md-4" >
+          
+                <div class="register">
+                    <div class="h1">
+                        <h1>Login</h1>
+                    </div>
+                    
+                        <% if(msgLogin){%>
+                        <div class="msgLogin">
+                           <h2><%= msgLogin %></h2>
+                            </div>
+                        <% } %>
+                   
+                    <div class="form">
+                        <form action="/login"  method="POST">
+
+                            <input type="text" name="username" id="name" autocomplete="off" required value="">
+                            <label style="font-size:20px" for=""> User name</label><br>
+
+                            <input type="password" name="password" required value="">
+                            <label style="font-size:20px" for=""> Pass word</label><br>
+
+                            
+                            <input type="submit" name="" value="Login" class="btn btn-success" style="color:black">
+                            <input type="submit" name="" value="Cancle" style="width:29%;background-color:#0f0f0f" class="btn btn-basic">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2" >
+x
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

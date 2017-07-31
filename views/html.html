@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../head %>
+
+</head>
+
+<body>
+    <% include ../header %>
+        <div style="padding-top:50px">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="unicron" style="font-size:170px">
+                        <span>Unicron</span>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <table class="tblprofile">
+                        <tr>
+                            <th>User name:</th>
+                            <td>
+                                <input type="texr" name="username" readonly="true" value=<%= User.username %> >
+                                <%= User.username %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Pass word:</th>
+                            <td>
+                                <%= User.password %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Age:</th>
+                            <td>
+                                <%= User.age %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>
+                                <%= User.email %>
+                            </td>
+                        </tr>
+                    </table>
+                    <form >
+                    <div class="divImg">
+                    
+                        <img class="avatar" src="/images/upload/<%= avatar %>" alt="">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+</body>
+
+</html>

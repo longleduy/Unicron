@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../head %>
+</head>
+
+<body <% include ../header %>
+    <div style="padding-top:50px">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="unicron">
+                    <span>Unicron</span>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="register">
+                    <div class="h1">
+                        <h1>Register</h1>
+                    </div>
+                    <% if(msgRegister){ %>
+                        <div class="msgLogin">
+                            <h2>
+                                <%= msgRegister %>
+                            </h2>
+                        </div>
+                        <% } %>
+
+                            <div class="form">
+                                <form action="/register" method="POST">
+
+                                    <input type="text" name="username" required value="">
+                                    <label style="font-size:20px"> User name</label><br>
+
+                                    <input type="password" name="password" required value="">
+                                    <label style="font-size:20px"> Pass word</label><br>
+
+                                    <input type="text" name="txtcpass" required value="">
+                                    <label style="font-size:20px" for=""> Confirm PassWord</label><br>
+
+                                    <input type="number" name="age" required value="">
+                                    <label style="font-size:20px" for=""> Age</label><br>
+
+                                    <input type="text" name="email" required value="">
+                                    <label for=""> Email</label><br>
+                                    <input type="hidden" name="avatar" value="">
+
+                                    <input type="submit" name="" value="Register" class="btn btn-success" style="color:black;">
+                                    <input type="submit" name="" value="Cancle" style="width:29%;background-color:#0f0f0f" class="btn btn-basic">
+
+                                </form>
+                            </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

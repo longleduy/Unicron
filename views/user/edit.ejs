@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../head %>
+
+</head>
+
+<body>
+    <% include ../header %>
+        <div style="padding-top:25px">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="unicron" style="font-size:170px"><br>
+                    
+                        <span>Unicron</span>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                <form >
+                    <div class="divImg">
+                    
+                        <img class="avatar" src="/images/upload/<%= avatar %>" alt=""><br><br>
+                        <input type="file" name="" value="">
+                        </div>
+                    </form>
+                    <table class="tblprofile tbledit">
+                        <tr>
+                            <th>User name:</th>
+                            <td>
+                                <input type="text" name="username" style="background-color:#0f0f0f; color:white;border:none" readonly="true" value=<%= User.username %> >
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Pass word:</th>
+                            <td>
+                            <input type="text" name="username" value=<%= User.password %> >
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Age:</th>
+                            <td>
+                            <input type="number" name="username" value=<%= User.age %> >
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>
+                            <input type="text" name="username" value=<%= User.email %> >
+                                
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </div>
+
+            </div>
+        </div>
+</body>
+
+</html>

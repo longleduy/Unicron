@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../head %>
+</head>
+<body
+     <% include ../header %>
+    <div>
+        <div class="row">
+            <div class="col-md-5" >
+                <div class="imgEdit">
+                    <img src="/images/upload/<%= Account.avatar %>" alt="">
+                    <input type="file" name="" value="">
+                </div>
+            </div>
+            <div class="col-md-4" >
+                <div class="register">
+                    <div class="h1">
+                        <h1>Edit Account</h1>
+                    </div>
+                    <div class="form">
+                        <form action="/adminAccount/listAccount/<%= Account._id %>/edit?_method=PUT" method="POST">
+
+                            <input type="text" name="txtuser" value=<%= Account.user_name %> required value="">
+                            <label for=""> User name</label><br>
+
+                            <input type="text" name="txtpass" value=<%= Account.pass_word %> required value="">
+                            <label for=""> Pass word</label><br>
+
+                            <input type="text" name="txtcpass" value="txtcpass" required value="">
+                            <label for=""> Confirm PassWord</label><br>
+
+                            <input type="number" name="numage" value=<%= Account.age %> required value="">
+                            <label for=""> Age</label><br>
+
+                            <input type="text" name="txtemail" value=<%= Account.email %> required value="">
+                            <label for=""> Email</label><br>
+                            <input type="submit" name="" value="Update" class="btn btn-success" style="color:black">
+                            <input type="submit" name="" value="Cancle" style="width:29%;background-color:#0f0f0f" class="btn btn-basic">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

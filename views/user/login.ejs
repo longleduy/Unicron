@@ -16,7 +16,11 @@
 
             </div>
             <div class="col-md-4" >
-          
+          <% if(msgLoggedIn) {%>
+                    <div class='msgLogin' style="height:60px;  font-family: DK Languedoc;">
+                        <h1><%= msgLoggedIn %></h1>
+                    </div>
+                        <%}%>
                 <div class="register">
                     <div class="h1">
                         <h1>Login</h1>
@@ -42,6 +46,7 @@
                             <input type="submit" name="" value="Cancle" style="width:29%;background-color:#0f0f0f" class="btn btn-basic">
 
                         </form>
+                        
                     </div>
                 </div>
             </div>

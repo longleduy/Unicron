@@ -7,8 +7,9 @@ var bodyParser = require('body-parser');
 var flash=require('connect-flash');
 var session=require('express-session');
 var passport=require('passport');
+var bcrypt=require('bcrypt-nodejs');
 var db=require('./config/db');
-
+var user=require('./routes/userRoutes');
 var app = express();
 
 // view engine setup
@@ -19,15 +20,18 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(session({secret:'dssdsd'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(flash());
-app.use(session({secret:'dssdsd'}));
-app.use(passport.session());
+
+
 app.use(passport.initialize());
+app.use(passport.session());
+// app.use(passport.initialize());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use('/',user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

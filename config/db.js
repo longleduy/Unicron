@@ -1,6 +1,6 @@
 var mongoose=require('mongoose');
 
-mongoose.connect("mongodb://localhost/mongdb_nodejs",{
+mongoose.connect("mongodb://localhost/mongodb_nodejs",{
     useMongoClient:true,
 })
 var db=mongoose.connection;

@@ -8,29 +8,31 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (id, done) {
     User.findById(id, function (err, user) {
         done(err, user);
+        
     })
 })
 //Login
 passport.use('login', new LocalStrategy({
+    
     usernameField: 'username',
     passwordField: 'password',
-    passReqToCallback: true
+    passReqToCallback : true
 
 },
     function (req, username, password, done) {
         process.nextTick(function () {
             User.findOne({ 'username': username }, function (err, user) {
                 if (err) {
-                    console.log(err)
+                    console.log('Failed')
                 }
                 if (!user) {
                     return done(null, false, req.flash('msgLogin', 'No user found with user name ' + username));
                 }
                 if (!user.validPass(password)) {
-                    return done(null, false, req.flash('msgLogib', 'Oops! Wrong pass word !'));
+                    return done(null, false, req.flash('msgLogin', 'Oops! Wrong pass word !'));
                 }
                 else {
-                    return (null, user);
+                    return done(null, user,req.flash('msgProfile','Hi! '+username+' '+'. Welcome to Unicron'));
                 }
             })
         })
@@ -43,24 +45,27 @@ passport.use('register', new LocalStrategy({
     passReqToCallback: true
 },
     function (req, username, password, done) {
+        
         process.nextTick(function () {
             User.findOne({ 'username': username }, function (err, data) {
                 if (err) {
-                    throw err;
+                    return done (err);
+                    
                 }
                 if (data) {
-                    return (null, false, req.flash('msgRegister', username + ' already exits'));
+                    return done(null, false, req.flash('msgRegister', username + ' already exits'));
+                    
                 }
                 else {
                     var newUser = new User();
                     newUser.username = username;
-                    newUser.password = newUser.hashPass(password);
+                    newUser.password =newUser.hashpass(password);
                     newUser.age = parseInt(req.body.age);
                     newUser.email = req.body.email;
                     newUser.avatar = req.body.avatar;
-                    newUser.save(function (err) {
+                    newUser.save(function (err,result) {
                         if (err) {
-                            throw err;
+                             return done(err);
                         }
                         else {
                             return done(null, newUser);

@@ -1,0 +1,229 @@
+* {
+  background-color: #0f0f0f;
+  color: #f4f4f4;
+ 
+}
+
+body {
+  color: black;
+  
+  font-family: Loki;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+/* Register.ejs */
+
+.register input {
+  height: 40px;
+  margin-bottom: 20px;
+  width: 70%;
+  text-align: center;
+   font-weight: bold; 
+  font-size: 20px;
+  letter-spacing: 1.5px;
+}
+
+.register h1 {
+  text-align: center;
+  color: black;
+  padding-top: 15px;
+  background-color: white;
+  font-weight: bold;
+}
+
+.register input[type=text]:focus, input[type=number]:focus, inptu[type=password]:focus {
+  border-color: white;
+  border-left-width: 20px;
+  border-right-width: 20px;
+  /* border-bottom-width: 7px; */
+  letter-spacing: 1.5px;
+  
+}
+
+.h1 {
+  height: 80px;
+  background-color: white;
+  /* color: white;
+  background-color: black; */
+  /* color: black; */
+  /* background-color: white; */
+  line-height: 100px;
+}
+
+.register {
+  font-family: DK Languedoc;
+  letter-spacing: 0.5px;
+  height: 630px;
+}
+
+
+/* Infor.ejs */
+
+.info h1 {
+  text-align: center;
+  padding-top: 5px;
+}
+
+.h2 {
+  height: 50px;
+}
+
+label {
+  font-size: 15px;
+}
+
+.register input[type=submit]:hover {
+  background-color: #494949;
+}
+
+.register input[type=submit] {
+  
+  font-size: 22px;
+  /* background-color: black;
+  border: 1px solid black; */
+  background-color: white;
+  border: 1px solid white;
+   font-weight: bold; 
+}
+
+.info table tbody tr td {
+  height: 50px;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 16px;
+  vertical-align: center;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.info table thead tr th {
+  width: 200px;
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+
+/* listAccount.ejs */
+
+.listAccount {
+  font-family: TOXIA, Arial;
+  letter-spacing: 1.5px;
+  height: 700px;
+}
+
+.listAccount h1 {
+  text-align: center;
+}
+
+.listAccount table thead tr th {
+  background-color: #f4f4f4;
+  color: black;
+  line-height: 40px;
+  text-align: center;
+  height: 50px;
+}
+
+.listAccount table tbody tr td {
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  /* font-weight: bold; */
+}
+
+.imglink {
+  width: 30px;
+  height: 30px;
+}
+
+.listAccount table tbody:nth-child(odd) {
+  background-color: #eaeaea;
+}
+
+.active {
+  font-family: TOXIA;
+  color: white;
+}
+
+.unicron {
+  font-size: 200px;
+  font-family: DK Mothman;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.imgEdit img {
+  width: 300px;
+  height: 300px;
+  border-radius: 5%;
+}
+
+.imgEdit {
+  width: 300px;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+.imgEdit input {
+  padding-top: 20px;
+}
+.msgLogin{
+  text-align: center;
+ 
+  
+}
+.tblprofile{
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  font-family: DK Languedoc;
+  margin-left: 
+30px;}
+.tblprofile tr{
+  height: 40px;
+}
+.tblprofile tr td{
+  padding-left: 30px;
+  
+}
+
+
+.avatar{
+
+  height: 250px;
+  width: 250px;
+                                                                                                  
+}
+.divImg {
+   padding-left:250px; 
+   padding-bottom: 10px; 
+   font-family: DK Languedoc;
+}
+.tbledit input{
+  width: 200%;
+  border: none;
+  padding-left: 30px;
+  margin-left: 30px;
+  /* border-bottom:0.5px dotted; */
+  background-color:white; 
+  color:black;
+  border:none";
+  
+ 
+}
+
+.tbledit{
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  font-family: DK Languedoc;
+}
+.tbledit tr td{
+  height: 50px;
+}
+.tbledit{
+
+}

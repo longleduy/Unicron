@@ -8,7 +8,13 @@
 
 <body>
     <% include ../header %>
-        <div style="padding-top:50px">
+        <div style="padding-top:30px">
+        <div style="font-family: DK Languedoc;width:100%;text-align:center">
+        <% if(msgProfile) {%> 
+            <span style="font-size:50px;"><%= msgProfile %></span>   
+            <% } %>
+            
+        </div>
             <div class="row">
                 <div class="col-md-5">
                     <div class="unicron" style="font-size:170px">
@@ -16,6 +22,10 @@
                     </div>
                 </div>
                 <div class="col-md-7">
+                <div class="divImg">
+             
+                        <img class="avatar" src="/images/upload/<%= avatar %>" alt="">
+                        </div>
                     <table class="tblprofile">
                         <tr>
                             <th>User name:</th>
@@ -43,10 +53,7 @@
                         </tr>
                     </table>
                     <form >
-                    <div class="divImg">
                     
-                        <img class="avatar" src="/images/upload/<%= avatar %>" alt="">
-                        </div>
                     </form>
                 </div>
 

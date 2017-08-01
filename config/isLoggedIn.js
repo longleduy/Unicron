@@ -3,6 +3,7 @@ var User=require('../models/user');
 
 exports.isLoggedIn=function(req,res,next){
     if(req.isAuthenticated()){
+        var tp='submit';
         return next();
         }
     else{
@@ -12,11 +13,12 @@ exports.isLoggedIn=function(req,res,next){
     }
 }
 exports.isnotLoggined=function(req,res,next){
-    if(req.isAuthenticated()){
-        req.flash('msgProfile','You need to logout first !');
-        res.redirect('/profile');
+    if(req.isUnauthenticated()){
+      return next();  
     }
     else{
-        return next();
+        req.flash('msgProfile','You need to logout first !');
+        res.redirect('/profile');
+        
     }
 }

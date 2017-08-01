@@ -4,8 +4,9 @@ var router = express.Router();
 var userController = require('../controllers/userController');
 var passport = require('../config/passport');
 var isLoggedIn=require('../config/isLoggedIn');
+var logout=require('../config/logout');
 
-router.get('/home', userController.home);
+router.get('/', userController.home);
 router.get('/login',isLoggedIn.isnotLoggined, userController.loginGet);
 router.get('/register',isLoggedIn.isnotLoggined, userController.registerGet);
 router.get('/profile',isLoggedIn.isLoggedIn, userController.profile);
@@ -20,5 +21,5 @@ router.post('/register', passport.authenticate('register', {
     failureRedirect: '/register',
     failureFlash: true
 }));
-
+router.post('/logout',logout.logout);
 module.exports = router;

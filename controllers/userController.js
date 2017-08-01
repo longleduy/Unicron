@@ -2,7 +2,7 @@ var passport = require('../config/passport');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 exports.home = function (req, res, next) {
-    req.redirect('/login');
+    res.redirect('/register');
 }
 exports.loginGet = function (req, res, next) {
     res.render('./user/login', { msgLogin: req.flash('msgLogin'), msgLoggedIn: req.flash('msgLoggedIn') });
@@ -22,7 +22,8 @@ exports.profile = function (req, res, next) {
     res.render('./user/profile', {
         User: req.user, 
         avatar: avat, 
-        msgProfile:req.flash('msgProfile')
+        msgProfile:req.flash('msgProfile'),
+        tp:'submit'
     });
 
 }

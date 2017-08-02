@@ -11,19 +11,18 @@
         <div style="padding-top:25px">
             <div class="row">
                 <div class="col-md-5">
-                    <div class="unicron" style="font-size:170px"><br>
-                    
+                    <div class="unicron" style="font-size:170px">
                         <span>Unicron</span>
                     </div>
                 </div>
                 <div class="col-md-7">
-                <form >
+                <form action='/update' enctype='multipart/form-data'   method="POST">
                     <div class="divImg">
                     
                         <img class="avatar" src="/images/upload/<%= avatar %>" alt=""><br><br>
-                        <input type="file" name="" value="">
+                        <input type="file" name="imgs" value="">
                         </div>
-                    </form>
+                    
                     <table class="tblprofile tbledit">
                         <tr>
                             <th>User name:</th>
@@ -53,7 +52,13 @@
                                 
                             </td>
                         </tr>
-                    </table>
+                        <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" name="" value="Update">
+                        </td>
+                        </tr>
+                    </table></form>
                     
                 </div>
 

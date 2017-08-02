@@ -8,6 +8,7 @@ var flash=require('connect-flash');
 var session=require('express-session');
 var passport=require('passport');
 var bcrypt=require('bcrypt-nodejs');
+// var multer=require('multer');
 var db=require('./config/db');
 var user=require('./routes/userRoutes');
 var app = express();

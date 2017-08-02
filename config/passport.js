@@ -68,7 +68,7 @@ passport.use('register', new LocalStrategy({
                              return done(err);
                         }
                         else {
-                            return done(null, newUser);
+                            return done(null, newUser,req.flash('msgLoggedIn','Hi!'+' '+username+' '+'You are registered successfully'));
                         }
                     })
                 }

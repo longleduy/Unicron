@@ -215,7 +215,10 @@ label {
   
  
 }
-
+.tbledit  tr td a{
+  padding-left: 30px;
+  margin-left: 30px;
+}
 .tbledit{
   font-size: 25px;
   letter-spacing: 0.5px;
@@ -245,4 +248,11 @@ label {
   font-family: DK Languedoc;
   font-size: 20px;
   font-weight: bold;
+}
+.tblprofile tr td a{
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  width: 300px;
+  
 }

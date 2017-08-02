@@ -1,6 +1,7 @@
 var passport = require('../config/passport');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var User=require('../models/user');
 exports.home = function (req, res, next) {
     res.redirect('/register');
 }

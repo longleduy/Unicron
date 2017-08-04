@@ -3,29 +3,49 @@
 
 <head>
     <% include ../head %>
-<title>Profile</title>
+        <title>Profile</title>
 </head>
 
 <body>
     <% include ../header %>
-        <div style="padding-top:30px">
-        <div style="font-family: DK Languedoc;width:100%;text-align:center">
-        <% if(msgProfile) {%> 
-            <span style="font-size:50px;"><%= msgProfile %></span>   
-            <% } %>
-            
-        </div>
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="unicron" style="font-size:170px">
-                        <span>Unicron</span>
+
+        <div class="row">
+            <div class='col-md-12'>
+                <div class='unicron2'>
+                    <span>Unicron</span>
+                    <div>
                     </div>
                 </div>
-                <div class="col-md-7">
-                <div class="divImg">
-             
-                        <img class="avatar" src="/images/upload/<%= avatar %>" alt="">
+                <div class="row">
+                    <div class='col-md-12'>
+                        <div>
+                            <div style="font-family: DK Languedoc;width:100%;text-align:center">
+                                <% if(msgProfile) {%>
+                                    <span style="font-size:50px;"><%= msgProfile %></span>
+                                    <% } %>
+                            </div>
                         </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class='col-md-2'>
+                        
+                    </div>
+
+                    <div class='col-md-4'>
+                        <div style='margin:0 auto;width:250px' >
+                            <img class='avatar'  src="./images/avatar/<%= avatar %>" alt="">
+                            </div>
+                            <div class='profilename'>
+                                <span><%= User.profilename %></span>
+                            </div>
+                            
+                        
+                    </div>
+
+                    <div class='col-md-5'>
                     <table class="tblprofile">
                         <tr>
                             <th>User name:</th>
@@ -34,9 +54,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Pass word:</th>
+                            <th>Profile name</th>
                             <td>
-                                <%= User.password %>
+                                <%= User.profilename %>
                             </td>
                         </tr>
                         <tr>
@@ -58,13 +78,14 @@
                         </td>
                         </tr>
                     </table>
-                    <form >
-                    
-                    </form>
-                </div>
+                        
+                    </div>
 
-            </div>
-        </div>
+                    <div class='col-md-1'>
+                        
+                    </div>
+
+                </div>
 </body>
 
 </html>

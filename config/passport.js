@@ -59,6 +59,7 @@ passport.use('register', new LocalStrategy({
                     var newUser = new User();
                     newUser.username = username;
                     newUser.password = newUser.hashpass(password);
+                    newUser.profilename=username;
                     newUser.age = parseInt(req.body.age);
                     newUser.email = req.body.email;
                     newUser.avatar = req.body.avatar;

@@ -3,14 +3,16 @@ var session = require('express-session');
 var passport = require('passport');
 var validator = require('express-validator');
 var LocalStrategy = require('passport-local').Strategy;
+
+var upload = require('../config/imgesUpload');
 var User = require('../models/user');
 
 exports.home = function (req, res, next) {
-    res.redirect('/register');
+    res.redirect('/login');
 }
 exports.loginGet = function (req, res, next) {
     sess = req.session;
-    res.render('./user/login', { username: sess.username,password:sess.password, msgPass: req.flash('msgPass'), msgUser: req.flash('msgUser'), msgLogin: req.flash('msgLogin'), msgLoggedIn: req.flash('msgLoggedIn') });
+    res.render('./user/login', { username: sess.username, password: sess.password, msgPass: req.flash('msgPass'), msgUser: req.flash('msgUser'), msgLogin: req.flash('msgLogin'), msgLoggedIn: req.flash('msgLoggedIn') });
 }
 exports.registerGet = function (req, res, next) {
     res.render('./user/register', { msgRegister: req.flash('msgRegister') });
@@ -54,12 +56,25 @@ exports.validate = function (req, res, next) {
     req.checkBody('password', req.flash('msgUser')).notEmpty();
     var errors = req.validationErrors();
     if (errors) {
-        sess.password=req.body.password;
+        sess.password = req.body.password;
         req.flash('msgUser', 'User name and pass word is not empty ');
         res.redirect('login');
     }
     else {
         next();
     }
+}
+exports.upload = function (req, res, next) {
+    upload(req, res, function (err) {
+        if (err) {
+            throw err;
+        }
+        else {
+            var user={
+                username:req.body.username,
+                password:req.body.newpassword
+            }
+        }
+    })
 }
 

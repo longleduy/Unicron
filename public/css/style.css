@@ -256,3 +256,18 @@ label {
   width: 300px;
   
 }
+.btnLogin{
+  padding: 15px 49%;
+  background-color: #f4f4f4;
+  color: black;
+  font-family: DK Languedoc;
+  font-size: 25px;
+  font-weight: bold;
+   line-height: 30px; 
+  text-decoration: none;
+  display: inline-block;
+
+}
+.btnLogin:hover{
+  text-decoration: none;;
+}

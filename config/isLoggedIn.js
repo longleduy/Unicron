@@ -1,6 +1,6 @@
 var passport=require('./passport');
 var User=require('../models/user');
-
+var validator = require('express-validator');
 exports.isLoggedIn=function(req,res,next){
     if(req.isAuthenticated()){
         var tp='submit';

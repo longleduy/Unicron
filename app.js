@@ -8,9 +8,11 @@ var flash=require('connect-flash');
 var session=require('express-session');
 var passport=require('passport');
 var bcrypt=require('bcrypt-nodejs');
+var validator=require('express-validator');
 // var multer=require('multer');
 var db=require('./config/db');
 var user=require('./routes/userRoutes');
+var upload2=require('./routes/upload');
 var app = express();
 
 // view engine setup
@@ -21,6 +23,7 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(validator());
 app.use(session({secret:'dssdsd'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -33,7 +36,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/',user);
-
+app.use('/',upload2);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

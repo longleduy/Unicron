@@ -26,6 +26,8 @@ passport.use('login', new LocalStrategy({
                     console.log('Failed')
                 }
                 if (!user) {
+                    // var sess1=req.session;
+                    // sess1.username=username;
                     return done(null, false, req.flash('msgLogin', 'No user found with user name ' + username));
                 }
                 if (!user.validPass(password)) {

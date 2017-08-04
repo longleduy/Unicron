@@ -3,58 +3,68 @@
 
 <head>
     <% include ../head %>
-<title>Login</title>
+        <title>Login</title>
 </head>
 
-<body <% include ../header %>
-    <div style="padding-top:100px">
-        <div class="row">
-            <div class="col-md-6" >
-                <div class="unicron">
-                    <span>Unicron</span>
-                </div>
-
-            </div>
-            <div class="col-md-4" >
-          <% if(msgLoggedIn) {%>
-                    <div class='msgLogin' style="height:60px;  font-family: DK Languedoc;">
-                        <h1><%= msgLoggedIn %></h1>
+<body>
+    <% include ./loginHeader %>
+        <div style="padding-top:100px">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="unicron">
+                        <span>Unicron</span>
                     </div>
+
+                </div>
+                <div class="col-md-4">
+                    <% if(msgLoggedIn.length>0) {%>
+                        <div class='msgLogin' style="height:60px;  font-family: DK Languedoc;">
+                            <h1>
+                                <%= msgLoggedIn %>
+                            </h1>
+                        </div>
                         <%}%>
-                <div class="register">
-                    <div class="h1">
-                        <h1>Login</h1>
-                    </div>
-                    
-                        <% if(msgLogin){%>
-                        <div class="msgLogin">
-                           <h2><%= msgLogin %></h2>
+                            <div class="register">
+                                <div class="h1">
+                                    <h1>Login</h1>
+                                </div>
+
+                                <% if(msgLogin){%>
+                                    <div class="msgLogin">
+                                        <h2>
+                                            <%= msgLogin %>
+                                        </h2>
+                                    </div>
+                                    <% } %>
+
+                                        <div class="form">
+                                            <form action="/login" method="POST">
+                                                <% if(msgUser) { %>
+                                                    <h2>
+                                                        <%= msgUser %>
+                                                    </h2>
+
+                                                    <% } %>
+                                                        <input type="text" name="username" id="name" autocomplete="off" value=<%= username %> >
+                                                        <label style="font-size:20px" for=""> User name</label>
+
+                                                        <input type="password" name="password" value=<%= password %> >
+                                                        <label style="font-size:20px" for=""> Pass word</label><br>
+
+
+                                                        <input type="submit" name="" value="Login" class="btn btn-success" style="color:black">
+                                                        <input type="submit" name="" value="Cancle" style="width:29%;background-color:#0f0f0f" class="btn btn-basic">
+
+                                            </form>
+
+                                        </div>
                             </div>
-                        <% } %>
-                   
-                    <div class="form">
-                        <form action="/login"  method="POST">
-
-                            <input type="text" name="username" id="name" autocomplete="off" required value="">
-                            <label style="font-size:20px" for=""> User name</label><br>
-
-                            <input type="password" name="password" required value="">
-                            <label style="font-size:20px" for=""> Pass word</label><br>
-
-                            
-                            <input type="submit" name="" value="Login" class="btn btn-success" style="color:black">
-                            <input type="submit" name="" value="Cancle" style="width:29%;background-color:#0f0f0f" class="btn btn-basic">
-
-                        </form>
-                        
-                    </div>
                 </div>
-            </div>
-            <div class="col-md-2" >
-x
+                <div class="col-md-2">
+                    
+                </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>

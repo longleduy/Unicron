@@ -4,17 +4,12 @@ var passport = require('passport');
 var validator = require('express-validator');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
-var express = require('express');
-var app = express();
-app.use(validator());
+
 exports.home = function (req, res, next) {
     res.redirect('/register');
 }
 exports.loginGet = function (req, res, next) {
-    // sess2=req.session;
     sess = req.session;
-    
-    // var user=sess2.username
     res.render('./user/login', { username: sess.username,password:sess.password, msgPass: req.flash('msgPass'), msgUser: req.flash('msgUser'), msgLogin: req.flash('msgLogin'), msgLoggedIn: req.flash('msgLoggedIn') });
 }
 exports.registerGet = function (req, res, next) {

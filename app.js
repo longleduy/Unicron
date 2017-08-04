@@ -9,10 +9,8 @@ var session=require('express-session');
 var passport=require('passport');
 var bcrypt=require('bcrypt-nodejs');
 var validator=require('express-validator');
-// var multer=require('multer');
 var db=require('./config/db');
 var user=require('./routes/userRoutes');
-var upload2=require('./routes/upload');
 var app = express();
 
 // view engine setup
@@ -32,11 +30,9 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(passport.initialize());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/',user);
-app.use('/',upload2);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

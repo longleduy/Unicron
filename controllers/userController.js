@@ -35,7 +35,6 @@ exports.profile = function (req, res, next) {
         msgProfile: req.flash('msgProfile'),
 
     });
-
 }
 exports.edit = function (req, res, next) {
     if (req.user.avatar == "") {
@@ -51,16 +50,11 @@ exports.edit = function (req, res, next) {
 }
 exports.loginPost = function (req, res, next) {
     res.render('./user/profile');
-
 }
-   
 exports.validate = function (req, res, next) {
     var sess;
- 
     sess = req.session;
     sess.username = req.body.username;
-    
-
     req.checkBody('username', req.flash('msgUser')).notEmpty();
     req.checkBody('password', req.flash('msgUser')).notEmpty();
     var errors = req.validationErrors();
@@ -68,7 +62,6 @@ exports.validate = function (req, res, next) {
         sess.password=req.body.password;
         req.flash('msgUser', 'User name and pass word is not empty ');
         res.redirect('login');
-        // return;
     }
     else {
         next();

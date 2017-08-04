@@ -12,18 +12,7 @@ router.get('/login', userController.loginGet);
 router.get('/register', isLoggedIn.isnotLoggined, userController.registerGet);
 router.get('/profile', isLoggedIn.isLoggedIn, userController.profile);
 router.get('/profile/edit/:id', isLoggedIn.isLoggedIn, userController.edit);
-router.post('/login', userController.validate
-    // req.checkBody('username').notEmpty();
-    // var errors = req.validationErrors();
-    // if (errors) {
-    //     req.flash('msgUser', 'dsdsds')
-    //     res.redirect('/login');
-    //     // return;
-    // }
-    // else {
-    //     next();
-    // }
-, passport.authenticate('login', {
+router.post('/login', userController.validate, passport.authenticate('login', {
     successRedirect: '/profile',
     failureRedirect: '/login',
     failureFlash: true

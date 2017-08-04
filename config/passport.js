@@ -8,15 +8,15 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (id, done) {
     User.findById(id, function (err, user) {
         done(err, user);
-        
+
     })
 })
 //Login
 passport.use('login', new LocalStrategy({
-    
+
     usernameField: 'username',
     passwordField: 'password',
-    passReqToCallback : true
+    passReqToCallback: true
 
 },
     function (req, username, password, done) {
@@ -26,15 +26,13 @@ passport.use('login', new LocalStrategy({
                     console.log('Failed')
                 }
                 if (!user) {
-                    // var sess1=req.session;
-                    // sess1.username=username;
                     return done(null, false, req.flash('msgLogin', 'No user found with user name ' + username));
                 }
                 if (!user.validPass(password)) {
                     return done(null, false, req.flash('msgLogin', 'Oops! Wrong pass word !'));
                 }
                 else {
-                    return done(null, user,req.flash('msgProfile','Hi! '+username+' '+'. Welcome to Unicron'));
+                    return done(null, user, req.flash('msgProfile', 'Hi! ' + username + ' ' + '. Welcome to Unicron'));
                 }
             })
         })
@@ -47,30 +45,29 @@ passport.use('register', new LocalStrategy({
     passReqToCallback: true
 },
     function (req, username, password, done) {
-        
+
         process.nextTick(function () {
             User.findOne({ 'username': username }, function (err, data) {
                 if (err) {
-                    return done (err);
-                    
+                    return done(err);
+
                 }
                 if (data) {
                     return done(null, false, req.flash('msgRegister', username + ' already exits'));
-                    
                 }
                 else {
                     var newUser = new User();
                     newUser.username = username;
-                    newUser.password =newUser.hashpass(password);
+                    newUser.password = newUser.hashpass(password);
                     newUser.age = parseInt(req.body.age);
                     newUser.email = req.body.email;
                     newUser.avatar = req.body.avatar;
-                    newUser.save(function (err,result) {
+                    newUser.save(function (err, result) {
                         if (err) {
-                             return done(err);
+                            return done(err);
                         }
                         else {
-                            return done(null, newUser,req.flash('msgLoggedIn','Hi!'+' '+username+' '+'You are registered successfully'));
+                            return done(null, newUser, req.flash('msgLoggedIn', 'Hi!' + ' ' + username + ' ' + 'You are registered successfully'));
                         }
                     })
                 }
@@ -78,4 +75,4 @@ passport.use('register', new LocalStrategy({
         })
     }
 ))
-module.exports=passport;
+module.exports = passport;

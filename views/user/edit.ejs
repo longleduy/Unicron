@@ -3,68 +3,121 @@
 
 <head>
     <% include ../head %>
-    <title>Edit</title>
-
+        <title>Profile</title>
 </head>
 
 <body>
     <% include ../header %>
-        <div style="padding-top:25px">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="unicron" style="font-size:170px">
-                        <span>Unicron</span>
+    <div>
+        <div class="row">
+            <div class='col-md-12'>
+                <div class='unicron2'>
+                    <span>Unicron</span>
+                    <div>
                     </div>
                 </div>
-                <div class="col-md-7">
-                <form action='/update' enctype='multipart/form-data'   method="POST">
-                    <div class="divImg">
-                    
-                        <img class="avatar" src="/images/upload/<%= avatar %>" alt=""><br><br>
-                        <input type="file" name="avatar" value="">
+                
+                <div class="row">
+                    <div class='col-md-3'>
+                    <form action='/upload' enctype='multipart/form-data' method='POST'>
+                   
+                        <div style='margin:0 auto;width:250px'>
+                            <img class='avatar' src="/images/avatar/<%= avatar %>" alt="">
                         </div>
-                    
-                    <table class="tblprofile tbledit">
-                        <tr>
-                            <th>User name:</th>
-                            <td>
-                                <input type="text" name="username" style="background-color:#0f0f0f; color:white;border:none" readonly="true" value=<%= User.username %> >
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Pass word:</th>
-                            <td>
-                            <input type="text" name="username" value=<%= User.password %> >
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Age:</th>
-                            <td>
-                            <input type="number" name="username" value=<%= User.age %> >
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Email</th>
-                            <td>
-                            <input type="text" name="username" value=<%= User.email %> >
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                        <td></td>
-                        <td>
-                            <input type="submit" name="" value="Update">
-                        </td>
-                        </tr>
-                    </table></form>
-                    
-                </div>
 
-            </div>
-        </div>
+                        <input type="file"  style='text-align:center;padding-top:20px;padding-left:80px' name="avatar" value="">
+                        <input type="submit" style='font-weight: bolder;font-size:18px;margin-top:20px;width:200px;margin-left:80px;font-family: DK Languedoc;' class='btn btn-default' name="" value="Upload">
+                             
+                    </form>
+                    </div>
+                    
+                    <div class='col-md-8'>
+                    <form action='/update' method='POST'>
+                        <div class='row' >
+                            <div class='col-md-6'>
+                                <table class="tblprofile tbledit">
+                            <tr>
+                                <th>User name:</th>
+                                <td>
+                                    <input type="text" readonly='true' style='background-color: #0f0f0f;color: #f4f4f4;' name="username" value=<%= User.username
+                                        %> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Profile name</th>
+                                <td>
+                                    <input type="text" name="profilename" value=<%= User.profilename %> >
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Age:</th>
+                                <td>
+                                    <input type="number" name="age" value=<%= User.age %> >
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>
+                                    <input type="text" name="email" value=<%= User.email %> >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+
+                                </td>
+                            </tr>
+                        </table>
+                            </div>
+                            <div class='col-md-6'>
+                            
+                                <table class="tblprofile tbledit">
+                            <tr>
+                            <td></td>
+                            <td><div>
+                            <div style="font-family: DK Languedoc;width:100%;text-align:center">
+                                <% if(msgedit) {%>
+                                    <span style="font-size:25px;"><%= msgedit %></span>
+                                    <% } %>
+                            </div></td>
+                            </tr>
+                            <tr>
+                                <th>Current password</th>
+                                <td>
+                                    <input type="password" name="currentpass" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>New password</th>
+                                <td>
+                                    <input type="password" name="newpass" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Confirm password:</th>
+                                <td>
+                                    <input type="password" name="renewpass" value="">
+                                </td>
+                            </tr>
+                        </table>
+                            </div>
+                            
+                            </div>
+                            <div class='row'>
+                                <div class='col-md-12'>
+                                <div style='margin-left:300px'>
+                                    <input type="submit" class='btn btn-default' style='font-weight: bolder;font-size:18px;width:200px;margin-top:37px;font-family: DK Languedoc;' name="" value="Update">
+                                    <input type="submit" class='btn btn-default' style='font-weight: bolder;font-size:18px;width:100px;margin-top:37px;background-color:#0f0f0f;color:#f4f4f4;font-family: DK Languedoc;' name="" value="Cancel">
+                                </div>
+                                    
+                                </div>
+                        </div>
+                        </form>
+                    </div>
+                    <div class='col-md-1'>
+                    </div>
+                </div>
+     </div>
 </body>
 
 </html>

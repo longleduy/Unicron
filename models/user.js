@@ -9,6 +9,7 @@ var userSchema = mongoose.Schema({
     email: String,
     avatar: String
 })
+
 userSchema.methods.hashpass = function (password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
 }

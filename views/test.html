@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../head %>
+        <title>Profile</title>
+</head>
+
+<body>
+    <% include ../header %>
+        <div>
+            <div class="row">
+                <div class='col-md-12'>
+                    <div class='unicron2'>
+                        <span>Unicron</span>
+                        <div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class='col-md-3'>
+                            <form action='/upload' enctype='multipart/form-data' method='POST'>
+
+                                <div style='margin:0 auto;width:250px'>
+                                    <img class='avatar' src="/images/avatar/<%= avatar %>" alt="">
+                                </div>
+
+                                <input type="file" style='text-align:center;padding-top:20px;padding-left:80px' name="avatar" value="">
+                                <input type="submit" style='margin-top:20px;width:200px;margin-left:80px' class='btn btn-default' name="" value="Upload">
+
+                            </form>
+                        </div>
+
+                        <div class='col-md-8'>
+                            <div class='row' style='border-style: solid'>
+                                <div class='col-md-6'>
+                                    <table class="tblprofile tbledit">
+                                        <tr>
+                                            <th>User name:</th>
+                                            <td>
+                                                <input type="text" readonly='true' style='background-color: #0f0f0f;color: #f4f4f4;' name="username" value=<%=u ser.username
+                                                    %> >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Profile name</th>
+                                            <td>
+                                                <input type="text" name="profilename" value=<%=u ser.profilename %> >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Age:</th>
+                                            <td>
+                                                <input type="number" name="age" value=<%=u ser.age %> >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Email:</th>
+                                            <td>
+                                                <input type="text" name="email" value=<%=u ser.email %> >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class='col-md-6'>
+                                    <table class="tblprofile tbledit">
+                                        <tr>
+                                        </tr>
+                                        <tr>
+                                            <th>Current password</th>
+                                            <td>
+                                                <input type="text" name="username" value="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>New password</th>
+                                            <td>
+                                                <input type="text" name="profilename" value="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Confirm password:</th>
+                                            <td>
+                                                <input type="number" name="age" value="">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <div class='row'>
+                                <div class='col-md-12'>
+                                    <input type="submit" name="" value="Update">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class='col-md-1'>
+                        </div>
+                    </div>
+                </div>
+</body>
+
+</html>

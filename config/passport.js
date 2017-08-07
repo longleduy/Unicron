@@ -76,4 +76,5 @@ passport.use('register', new LocalStrategy({
         })
     }
 ))
+
 module.exports = passport;

@@ -22,6 +22,8 @@ router.post('/register', passport.authenticate('register', {
     failureRedirect: '/register',
     failureFlash: true
 }));
+router.post('/upload',userController.upload);
+router.post('/update',userController.update);
 router.post('/logout', logout.logout);
 
 module.exports = router;

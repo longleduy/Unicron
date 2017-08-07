@@ -1,4 +1,5 @@
 var passport = require('../config/passport');
+var bcrypt = require('bcrypt-nodejs');
 var session = require('express-session');
 var passport = require('passport');
 var validator = require('express-validator');
@@ -42,7 +43,8 @@ exports.edit = function (req, res, next) {
     }
     res.render('./user/edit', {
         User: req.user,
-        avatar: avat
+        avatar: avat,
+        msgedit:req.flash('msgedit')
     })
 }
 exports.loginPost = function (req, res, next) {
@@ -70,11 +72,99 @@ exports.upload = function (req, res, next) {
             throw err;
         }
         else {
-            var user={
-                username:req.body.username,
-                password:req.body.newpassword
-            }
+            var uploadavatar = { avatar: req.file.originalname };
+            User.findOneAndUpdate({ username: req.user.username }, { $set: uploadavatar }, function (err, data) {
+                if (err) {
+                    throw err;
+                }
+                else {
+                    var user = req.user.username;
+                    res.redirect('/profile/edit/' + req.user.username)
+                }
+            })
         }
     })
+}
+exports.update = function (req, res, next) {
+    if ((req.body.currentpass == '') || (req.body.newpass == '')) {
+        var update1 = {
+            profilename: req.body.profilename,
+            age: parseInt(req.body.age),
+            email: req.body.email
+        }
+        User.findOneAndUpdate({ username: req.user.username }, { $set: update1 }, function (err, data) {
+            if (err) {
+                throw err;
+            }
+            else {
+                res.redirect('/profile');
+            }
+        })
+    }
+    else {
+
+        bcrypt.compare(req.body.currentpass, req.user.password, function (err, valid) {
+            if (valid == false) {
+                req.flash('msgedit', 'Opp! Wrong pass word')
+                res.redirect('/profile/edit/' + req.user.username);
+
+            }
+            else {
+                bcrypt.genSalt(10, function (err, salt) {
+                    if (err) {
+                        throw err;
+                    }
+                    else {
+                        bcrypt.hash(req.body.newpass, salt, null, function (err, hashPass) {
+                            var update2 = {
+                                profilename: req.body.profilename,
+                                password: hashPass,
+                                age: parseInt(req.body.age),
+                                email: req.body.email,
+                            }
+                            User.findOneAndUpdate({ username: req.user.username }, { $set: update2 }, function (err, data2) {
+                                res.redirect('/profile');
+                            })
+                        })
+                    }
+                })
+
+            }
+        })
+    }
+
+
+
+    // if (req.body.currentpass == '') {
+    //     var update1 = {
+    //         profilename: req.body.profilename,
+    //         age: req.body.age,
+    //         emial: req.body.email
+    //     }
+    //     User.findOneAndUpdate({ username: req.user.username }, { $set: update1 }, function (err, data) {
+    //         console.log('Update');
+    //         res.redirect('/profile');
+    //     })
+    // }
+    // else {
+    //     bcrypt.genSalt(10, function (err, salt) {
+    //         bcrypt.hash(req.body.currentpass, salt, function (err, hash) {
+    //             var update2 = {
+    //                 profilename: req.body.profilename,
+    //                 password: hash,
+    //                 age: req.body.age,
+    //                 emial: req.body.email
+    //             }
+    //             User.findOneAndUpdate({ username: req.user.username }, { $set: update2 }, function (err, data) {
+    //                 console.log('Update');
+    //                 res.redirect('/profile');
+    //             })
+    //         })
+    //     })
+
+
+
+    // }
+
 }
 

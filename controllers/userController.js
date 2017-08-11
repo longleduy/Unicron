@@ -12,12 +12,12 @@ exports.home = function (req, res, next) {
     res.redirect('/login');
 }
 exports.loginGet = function (req, res, next) {
-    sess = req.session;
+    var sess = req.session;
     res.render('./user/login', { username: sess.username, password: sess.password, msgPass: req.flash('msgPass'), msgUser: req.flash('msgUser'), msgLogin: req.flash('msgLogin'), msgLoggedIn: req.flash('msgLoggedIn') });
 }
-exports.registerGet = function (req, res, next) {
-    res.render('./user/register', { msgRegister: req.flash('msgRegister') });
-}
+exports.registerGet = (req, res, next) => 
+    res.render('./user/register', { msgRegister: req.flash('msgRegister') })
+
 exports.profile = function (req, res, next) {
 
     if (req.user.avatar == "") {
@@ -85,14 +85,15 @@ exports.upload = function (req, res, next) {
         }
     })
 }
+FIXME:
 exports.update = function (req, res, next) {
     if ((req.body.currentpass == '') || (req.body.newpass == '')) {
-        var update1 = {
+        let update1 = {
             profilename: req.body.profilename,
             age: parseInt(req.body.age),
             email: req.body.email
         }
-        User.findOneAndUpdate({ username: req.user.username }, { $set: update1 }, function (err, data) {
+        User.findOneAndUpdate({ username: req.user.username }, { $set: update1 }, (err, data) => {
             if (err) {
                 throw err;
             }
@@ -115,8 +116,8 @@ exports.update = function (req, res, next) {
                         throw err;
                     }
                     else {
-                        bcrypt.hash(req.body.newpass, salt, null, function (err, hashPass) {
-                            var update2 = {
+                        bcrypt.hash(req.body.newpass, salt, null,  (err, hashPass) => {
+                            let update2 = {
                                 profilename: req.body.profilename,
                                 password: hashPass,
                                 age: parseInt(req.body.age),
@@ -132,39 +133,6 @@ exports.update = function (req, res, next) {
             }
         })
     }
-
-
-
-    // if (req.body.currentpass == '') {
-    //     var update1 = {
-    //         profilename: req.body.profilename,
-    //         age: req.body.age,
-    //         emial: req.body.email
-    //     }
-    //     User.findOneAndUpdate({ username: req.user.username }, { $set: update1 }, function (err, data) {
-    //         console.log('Update');
-    //         res.redirect('/profile');
-    //     })
-    // }
-    // else {
-    //     bcrypt.genSalt(10, function (err, salt) {
-    //         bcrypt.hash(req.body.currentpass, salt, function (err, hash) {
-    //             var update2 = {
-    //                 profilename: req.body.profilename,
-    //                 password: hash,
-    //                 age: req.body.age,
-    //                 emial: req.body.email
-    //             }
-    //             User.findOneAndUpdate({ username: req.user.username }, { $set: update2 }, function (err, data) {
-    //                 console.log('Update');
-    //                 res.redirect('/profile');
-    //             })
-    //         })
-    //     })
-
-
-
-    // }
-
 }
+//FIXME:
 

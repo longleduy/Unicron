@@ -9,6 +9,7 @@ var session=require('express-session');
 var passport=require('passport');
 var bcrypt=require('bcrypt-nodejs');
 var validator=require('express-validator');
+
 var db=require('./config/db');
 var user=require('./routes/userRoutes');
 var app = express();

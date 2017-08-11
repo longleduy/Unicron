@@ -7,6 +7,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var upload = require('../config/imgesUpload');
 var User = require('../models/user');
+var hashPassword = require('../config/hashPassword');
 
 exports.home = function (req, res, next) {
     res.redirect('/login');
@@ -15,7 +16,7 @@ exports.loginGet = function (req, res, next) {
     var sess = req.session;
     res.render('./user/login', { username: sess.username, password: sess.password, msgPass: req.flash('msgPass'), msgUser: req.flash('msgUser'), msgLogin: req.flash('msgLogin'), msgLoggedIn: req.flash('msgLoggedIn') });
 }
-exports.registerGet = (req, res, next) => 
+exports.registerGet = (req, res, next) =>
     res.render('./user/register', { msgRegister: req.flash('msgRegister') })
 
 exports.profile = function (req, res, next) {
@@ -44,7 +45,7 @@ exports.edit = function (req, res, next) {
     res.render('./user/edit', {
         User: req.user,
         avatar: avat,
-        msgedit:req.flash('msgedit')
+        msgedit: req.flash('msgedit')
     })
 }
 exports.loginPost = function (req, res, next) {
@@ -103,7 +104,6 @@ exports.update = function (req, res, next) {
         })
     }
     else {
-
         bcrypt.compare(req.body.currentpass, req.user.password, function (err, valid) {
             if (valid == false) {
                 req.flash('msgedit', 'Opp! Wrong pass word')
@@ -111,28 +111,18 @@ exports.update = function (req, res, next) {
 
             }
             else {
-                bcrypt.genSalt(10, function (err, salt) {
-                    if (err) {
-                        throw err;
-                    }
-                    else {
-                        bcrypt.hash(req.body.newpass, salt, null,  (err, hashPass) => {
-                            let update2 = {
-                                profilename: req.body.profilename,
-                                password: hashPass,
-                                age: parseInt(req.body.age),
-                                email: req.body.email,
-                            }
-                            User.findOneAndUpdate({ username: req.user.username }, { $set: update2 }, function (err, data2) {
-                                res.redirect('/profile');
-                            })
-                        })
-                    }
+                let update2 = {
+                    profilename: req.body.profilename,
+                    password: hashPassword(req.body.newpass),
+                    age: parseInt(req.body.age),
+                    email: req.body.email,
+                }
+                User.findOneAndUpdate({ username: req.user.username }, { $set: update2 }, function (err, data2) {
+                    res.redirect('/profile');
                 })
-
             }
+
         })
     }
 }
-//FIXME:
 

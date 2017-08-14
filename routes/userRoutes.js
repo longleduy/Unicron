@@ -25,5 +25,7 @@ router.post('/register', passport.authenticate('register', {
 router.post('/upload',userController.upload);
 router.post('/update',userController.update);
 router.post('/logout', logout.logout);
-
+router.get('/promise',function(req,res,next){
+    res.render('promise');
+})
 module.exports = router;

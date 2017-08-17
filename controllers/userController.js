@@ -8,6 +8,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var upload = require('../config/imgesUpload');
 var User = require('../models/user');
 var hashPassword = require('../config/hashPassword');
+var isLoggedIn=require('../config/isLoggedIn');
 
 exports.home = function (req, res, next) {
     res.redirect('/login');
@@ -20,18 +21,19 @@ exports.registerGet = (req, res, next) =>
     res.render('./user/register', { msgRegister: req.flash('msgRegister') })
 
 exports.profile = function (req, res, next) {
-
+    var sesstp=req.session;
     if (req.user.avatar == "") {
         var avat = 'avatar.jpg';
     }
     else {
         var avat = req.user.avatar;
     }
-    console.log(avat);
+    console.log(sesstp.tp);
     res.render('./user/profile', {
         User: req.user,
         avatar: avat,
         msgProfile: req.flash('msgProfile'),
+        tp:sesstp.tp,
 
     });
 }
@@ -62,6 +64,7 @@ exports.validate = function (req, res, next) {
         sess.password = req.body.password;
         req.flash('msgUser', 'User name and pass word is not empty ');
         res.redirect('login');
+        
     }
     else {
         next();
@@ -125,4 +128,3 @@ exports.update = function (req, res, next) {
         })
     }
 }
-

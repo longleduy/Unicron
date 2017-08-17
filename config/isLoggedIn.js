@@ -1,10 +1,19 @@
 var passport = require('./passport');
 var User = require('../models/user');
 var validator = require('express-validator');
+var session=require('express-session');
 exports.isLoggedIn = function (req, res, next) {
+    var sesstp=req.session;
     if (req.isAuthenticated()) {
-        var tp = 'submit';
-        return next();
+       if(req.user.admin == '1'){
+        sesstp.tp="submit";
+      
+       }
+       else{
+        sesstp.tp="";
+        
+       }
+       return next();
     }
     else {
         req.flash('msgLoggedIn', 'You need to login first!')

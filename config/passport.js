@@ -63,6 +63,7 @@ passport.use('register', new LocalStrategy({
                     newUser.age = parseInt(req.body.age);
                     newUser.email = req.body.email;
                     newUser.avatar = req.body.avatar;
+                    newUser.admin = 'isAdmin';
                     newUser.save(function (err, result) {
                         if (err) {
                             return done(err);

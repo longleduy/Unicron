@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../head %>
+        <title>Profile</title>
+</head>
+
+<body>
+    <% include ../header %>
+        <div>
+                <table class="tbladmin">
+                <thead>
+                    <td>User Name</td>
+                    <td>Profile Name</td>
+                    <td>Age</td>
+                    <td>Email</td>
+                    <td>Admin</td>
+                    <td></td>
+
+                </thead>
+                <% listUser.forEach(function(user){ %>
+                    <tbody>
+                        <td>
+                            <%= user.username %>
+                        </td>
+                        <td>
+                            <%= user.profilename %>
+                        </td>
+                        <td style="text-align:center">
+                            <%= user.age %>
+                        </td>
+                        <td>
+                            <%= user.email %>
+                        </td>
+                        <td style="text-align:center"><%= user.admin %></td>
+                        <td style="width:300px">
+                            <a href="/admin/delete/<%= user.username %>" class="btn btn-danger" >Delete</a>
+                            <a href="/admin/setadmin/<%= user.username %>" class="btn btn-default" >Set Admin</a>
+                            <a href="/admin/removeadmin/<%= user.username %>" class="btn btn-danger" >Remove Admin</a>
+                        </td>
+                    </tbody>
+                    <% }) %>
+
+            </table>
+        </div>
+</body>
+
+</html>

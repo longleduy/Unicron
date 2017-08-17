@@ -12,6 +12,7 @@ var validator=require('express-validator');
 
 var db=require('./config/db');
 var user=require('./routes/userRoutes');
+import admin from './routes/adminRoutes';
 var app = express();
 
 // view engine setup
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(__dirname+'/public/icon.ico'));
 
 app.use('/',user);
+app.use('/',admin);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
